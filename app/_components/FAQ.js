@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function FAQ() {
     return (
-        <section class="bg-white dark:bg-gray-900">
-            <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-                <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
+        <section className="bg-white dark:bg-gray-900">
+            <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+                <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
                     <h1 className=" p-3 font-bold text-4xl">Frequently asked questions</h1>
                     <div className="flow-root">
                         <div className="-my-8 divide-y divide-gray-100">

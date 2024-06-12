@@ -21,10 +21,10 @@ export default function Home() {
         }}
       /> */}
 
-      <Head>
-        <title></title>
+      {/* <Head>
+        <title></title>classclass
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
       <Header />
       <Landing />
       <Featured />
