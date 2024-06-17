@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import Image from "next/image"
 import Link from 'next/link'
 
 
@@ -51,9 +52,11 @@ export default function Example() {
                                     <AvatarImage src={product.imageSrc} className=" w-4/6" />
                                     <AvatarFallback>CN</AvatarFallback>
                                 </Avatar> */}
-                                    <img
+                                    <Image
                                         src={product.imageSrc}
                                         alt={product.imageAlt}
+                                        width={50}
+                                        height={50}
                                         className="h-full w-full object-cover object-center lg:w-full"
                                     />
 
