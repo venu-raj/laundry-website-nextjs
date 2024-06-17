@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
+import Image from "next/image";
 
 export default function Header() {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Header() {
             href="/"
             className="text-lg font-semibold rounded-lg tracking-widest focus:outline-none focus:shadow-outline"
           >
-            <img src="/IS_Logo_transparent background.png" className=" h-12 w-12 text-4xl Avenir tracking-tighter text-gray-900 md:text-4x1 lg:text-3xl" />
+            <Image width={12} height={12} src="/IS_Logo_transparent background.png" className=" h-12 w-12 text-4xl Avenir tracking-tighter text-gray-900 md:text-4x1 lg:text-3xl" />
 
           </a>
           <button

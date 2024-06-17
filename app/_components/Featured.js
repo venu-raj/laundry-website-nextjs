@@ -8,7 +8,7 @@ export default function Featured() {
                 <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
 
                     {/* <Image width={100} height={18} /> */}
-                    <img className="rounded-xl" src="https://static.wixstatic.com/media/42e422_cdf5a650da9640f7b2f0c9245a76f0b8~mv2.jpg/v1/crop/x_397,y_0,w_572,h_667/fill/w_460,h_537,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/9b351f5f68.jpg" alt="Image Description" />
+                    <Image width={1} height={1} className="rounded-xl" src="/young.jpg" alt="Image Description" />
                     <div className="mt-5 sm:mt-10 lg:mt-0">
                         <div className="space-y-6 sm:space-y-8">
                             <div className="space-y-2 md:space-y-4">
