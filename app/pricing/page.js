@@ -43,9 +43,9 @@ export default function Example() {
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">Simplified Pricing</h2>
 
                 <div className="mt-6 grid grid-cols-3 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 xl:gap-x-8">
-                    {products.map((product) => (
+                    {products.map((product, i) => (
 
-                        <Link href={product.href} >
+                        <Link href={product.href} key={i}>
                             <div key={product.id} className="group relative">
                                 <div className=" justify-between overflow-hidden rounded-md  items-center lg:aspect-none group-hover:opacity-75 lg:h-80">
                                     {/* <Avatar>
