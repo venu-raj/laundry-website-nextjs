@@ -1,25 +1,25 @@
-import { cn } from "@/lib/utils";
+
 import Image from "next/image";
 
 export default function Featured() {
     return (
         <section className="bg-white dark:bg-gray-900">
-            <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            <div className="max-w-[85rem] px-4 py-2 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                 <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
 
                     {/* <Image width={100} height={18} /> */}
-                    <Image width={1} height={1} className="rounded-xl" src="/young.jpg" alt="Image Description" />
+                    <Image width={800} height={100} className="rounded-xl" src="/i_1.png" alt="Image Description" />
                     <div className="mt-5 sm:mt-10 lg:mt-0">
                         <div className="space-y-6 sm:space-y-8">
                             <div className="space-y-2 md:space-y-4">
                                 <h2 className="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-neutral-200">
-                                    We tackle the challenges start-ups face
+                                    Why Choose Us
                                 </h2>
-                                <p className="text-gray-500 dark:text-neutral-500">
+                                {/* <p className="text-gray-500 dark:text-neutral-500">
 
                                     Few Steps towards
                                     Carbon Neutral Future.
-                                </p>
+                                </p> */}
                             </div>
                             <ul className="space-y-2 sm:space-y-4">
                                 <li className="flex space-x-3">
@@ -28,7 +28,7 @@ export default function Featured() {
                                     </span>
 
                                     <span className="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                        <span className="font-bold"> 87% Pickup and Drops</span> Using EVs
+                                        Crisp perfection for <span className="font-bold">Every outfit </span>
                                     </span>
                                 </li>
 
@@ -38,7 +38,7 @@ export default function Featured() {
                                     </span>
 
                                     <span className="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                        ECO Friendly <span className="font-bold">Detergents</span>
+                                        Handles stubborn <span className="font-bold">wrinkles flawlessly</span>
                                     </span>
                                 </li>
 
@@ -48,7 +48,7 @@ export default function Featured() {
                                     </span>
 
                                     <span className="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                        Minimal Plastic Usage
+                                        Extended lifespan of your clothes
                                     </span>
                                 </li>
                                 <li className="flex space-x-3">
@@ -57,7 +57,7 @@ export default function Featured() {
                                     </span>
 
                                     <span className="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                        Responsible Water Usage
+                                        Steam helps to kill germs and bacteria
                                     </span>
                                 </li>
                             </ul>

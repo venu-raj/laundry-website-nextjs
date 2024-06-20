@@ -18,6 +18,8 @@ module.exports = {
     },
     extend: {
       colors: {
+
+        'green-rgba': 'rgba(72,144,131,255)',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -77,5 +79,6 @@ module.exports = {
     require("tailwindcss-animate"),
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
+    'autoprefixer',
   ],
 }

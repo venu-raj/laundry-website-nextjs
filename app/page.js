@@ -1,13 +1,8 @@
 
-import { NextSeo } from "next-seo";
-import Header from "@/app/_components/ Header";
-import Head from "next/head";
-import Footer from "@/app/_components/Footer";
 import Landing from "@/app/_components/Landing";
-import ContactUs from "@/app/_components/Contactus";
 import Featured from "@/app/_components/Featured";
 import FAQ from "@/app/_components/FAQ";
-import Link from "next/link";
+import ContactUs from "./_components/Contactus";
 
 export default function Home() {
   return (
@@ -25,12 +20,10 @@ export default function Home() {
         <title></title>classclass
         <link rel="icon" href="/favicon.ico" />
       </Head> */}
-      <Header />
       <Landing />
       <Featured />
       <FAQ />
       <ContactUs />
-      <Footer />
     </div>
     // <main className="flex min-h-screen flex-col items-center justify-between p-24">
     //   <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
