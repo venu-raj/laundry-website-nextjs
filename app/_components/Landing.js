@@ -5,9 +5,9 @@ import Link from "next/link";
 export default function Landing() {
   return (
     <section className="text-gray-600 body-font">
-      <div className="max-w-7xl mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-        <div className="lg:flex-grow md:w-1/2 md:ml-24 pt-6 flex flex-col md:items-start md:text-left mb-40 items-center text-center">
-          <h4 className="mb-5 sm:text-5xl text-6xl font-bold items-center Avenir xl:w-2/2 text-gray-900">
+      <div className="max-w-7xl mx-auto flex px-5 pt-20 pb-0 md:flex-row flex-col items-center">
+        <div className="lg:flex-grow md:w-1/2 md:ml-24 pt-6 flex flex-col md:items-start md:text-left mb-40 gap-4 items-center text-center">
+          <h4 className="mb-5 sm:text-5xl text-4xl font-bold items-center Avenir xl:w-2/2 text-gray-900">
 
             Experience The<br />Difference Of<br /><span className=" text-green-rgba">Perfectly Stream<br />Ironed Clothes</span>
           </h4>

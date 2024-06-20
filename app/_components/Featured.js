@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Featured() {
     return (
         <section className="bg-white dark:bg-gray-900">
-            <div className="max-w-[85rem] px-4 py-2 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            <div className="max-w-[85rem] px-4 py-2 sm:px-6 lg:px-4 lg:py-4 mx-auto">
                 <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
 
                     {/* <Image width={100} height={18} /> */}
