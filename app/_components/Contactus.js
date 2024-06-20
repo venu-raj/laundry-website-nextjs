@@ -13,7 +13,7 @@ export default function ContactUs() {
 
     return (
         <section>
-            <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+            <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-2 lg:px-8 lg:py-16">
                 <div className="  lg:flex grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 justify-self-center place-items-center">
                     <div className="mx-auto max-w-2xl text-center">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact Us</h2>
