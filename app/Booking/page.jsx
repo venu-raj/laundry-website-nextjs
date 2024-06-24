@@ -44,6 +44,7 @@ export default function Booking() {
   const [date, setDate] = useState(Date);
   const [isLoading, setIsLoading] = useState(false);
   const [humanaddress, sethumanaddress] = useState("");
+  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(formSchema),

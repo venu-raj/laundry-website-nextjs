@@ -2,9 +2,8 @@
 import { MinusCircle, PlusCircle } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { ChevronRight } from 'lucide-react';
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const initialServices = [
     {
@@ -13,7 +12,7 @@ const initialServices = [
         deliveryTime: "24 hr Delivery",
         ecoSafe: true,
         backgroundColor: "bg-red-400",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Trousers / Pants / Jeans",
@@ -21,7 +20,7 @@ const initialServices = [
         deliveryTime: "24 hr Delivery",
         ecoSafe: true,
         backgroundColor: "bg-green-500",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Chudi Tops Daily Wear",
@@ -29,7 +28,7 @@ const initialServices = [
         deliveryTime: "24-48 hr Delivery",
         ecoSafe: true,
         backgroundColor: "bg-purple-500",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Chudi Tops Others (Anarkali/Gowns/Layered)",
@@ -37,7 +36,7 @@ const initialServices = [
         deliveryTime: "24-48 hr Delivery",
         ecoSafe: false,
         backgroundColor: "bg-orange-500",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Chudi Bottom (any)",
@@ -45,7 +44,7 @@ const initialServices = [
         deliveryTime: "24 hr Delivery",
         ecoSafe: false,
         backgroundColor: "bg-cyan-400",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Dhoti",
@@ -53,7 +52,7 @@ const initialServices = [
         deliveryTime: "3 Day Delivery",
         ecoSafe: false,
         backgroundColor: "bg-indigo-600",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Saree",
@@ -61,7 +60,7 @@ const initialServices = [
         deliveryTime: "3 Day Delivery",
         ecoSafe: false,
         backgroundColor: "bg-sky-500",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Silk Sarees / Satin Sarees",
@@ -69,7 +68,7 @@ const initialServices = [
         deliveryTime: "3 Day Delivery",
         ecoSafe: false,
         backgroundColor: "bg-lime-800",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Blouse",
@@ -77,7 +76,7 @@ const initialServices = [
         deliveryTime: "3 Day Delivery",
         ecoSafe: false,
         backgroundColor: "bg-fuchsia-700",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Kids Wear (1 piece, under 10 years)",
@@ -85,7 +84,7 @@ const initialServices = [
         deliveryTime: "3 Day Delivery",
         ecoSafe: false,
         backgroundColor: "bg-rose-700",
-        countValue: 0
+        countValue: 0,
     },
     {
         name: "Others (billed upon delivery)",
@@ -93,13 +92,12 @@ const initialServices = [
         deliveryTime: "3 Day Delivery",
         ecoSafe: false,
         backgroundColor: "bg-amber-400",
-        countValue: 0
+        countValue: 0,
     },
 ];
 
 export default function Example() {
     const [services, setServices] = useState(initialServices);
-    const router = useRouter();
 
     const handleIncrement = (index) => {
         const newServices = [...services];
@@ -115,13 +113,6 @@ export default function Example() {
         setServices(newServices);
     };
 
-    const handleNavigation = () => {
-        // const props = { services };
-        // router.push({
-        //     pathname: '/Booking',
-        //     query: services,
-        // });
-    };
 
 
     return (
@@ -131,8 +122,8 @@ export default function Example() {
                     <h1 className="text-3xl font-semibold mb-8 text-white">Our Services</h1>
                     <div className="w-full max-w-4xl space-y-4">
                         {services.map((service, index) => (
-                            <div className=" flex">
-                                <div key={index} className="p-4 rounded-lg shadow-lg bg-white text-black w-full">
+                            <div key={index} className="flex" >
+                                <div className="p-4 rounded-lg shadow-lg bg-white text-black w-full">
                                     <div className="flex justify-between">
                                         <h2 className="text-xl font-bold">{service.name}</h2>
                                         <div className="flex gap-3">
@@ -142,24 +133,24 @@ export default function Example() {
                                         </div>
                                     </div>
                                     <p className="text-lg mb-4">{service.price} per piece</p>
-                                    <p className="text-lg mb-4">{service.countValue > 0 ? `Total ₹${service.price * service.countValue}` : null}
-                                    </p>
+                                    <p className="text-lg mb-4">{service.countValue > 0 ? `Total ₹${service.price * service.countValue}` : null}</p>
                                 </div>
-                                <div className={`w-9 rounded-r-lg ${service.backgroundColor}  flex items-center justify-center`}>
+                                <div className={`w-9 rounded-r-lg ${service.backgroundColor} flex items-center justify-center`}>
                                     <ChevronRight size={24} color="white" />
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <Button className=" w-full mt-5 text-black    bg-white" onClick={handleNavigation}>
-                        CONTINUE
-                    </Button>
+                    <Link href={'/Booking'} >
+                        <Button className="w-full mt-5 text-black bg-white">
+                            CONTINUE
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>
     );
 }
-
 
 // import { MinusCircle, MinusCircleIcon, Plus, PlusCircle, PlusIcon } from "lucide-react";
 // import { useState } from "react";
@@ -244,7 +235,6 @@ export default function Example() {
 //     },
 // ];
 
-
 // export default function Example() {
 //     const [count, setCount] = useState(0);
 
@@ -257,7 +247,6 @@ export default function Example() {
 //             setCount(count - 1);
 //         }
 //     };
-
 
 //     return (
 //         <div className=" bg-blue-500">
@@ -293,8 +282,6 @@ export default function Example() {
 //     );
 // }
 
-
-
 // // export default function Services() {
 // //     return (
 // //         <div className="flex flex-col items-center justify-center bg-blue-700 text-white py-10">
@@ -316,4 +303,3 @@ export default function Example() {
 // //         </div>
 // //     );
 // // }
-

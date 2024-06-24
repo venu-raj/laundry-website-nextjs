@@ -69,8 +69,8 @@ export default function WhyUs() {
           <p className="mt-6 text-md leading-8 text-gray-900">
             Then, IRON SPOT is the solution to all your worries. From convenient
             home pick-up to expert wrinkle-free ironing and same-day delivery,
-            we've got you covered in all aspects. Experience the wonder of steam
-            iron over coal or electric iron services. Try us today!
+            we have got you covered in all aspects. Experience the wonder of
+            steam iron over coal or electric iron services. Try us today!
           </p>
           <Link href={"/pricing"}>
             <Button className=" px-8 mt-3">Explore Now</Button>
