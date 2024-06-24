@@ -1,4 +1,5 @@
 "use client";
+
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,7 +11,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import axios from "axios";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -24,23 +24,26 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Locate } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast";
+import { request, gql } from "graphql-request";
+import axios from "axios";
 
 const formSchema = z.object({
   fullName: z.string().min(4).max(20),
   phoneNumber: z.string().min(10).max(20),
   emailAddress: z.string().email(),
-  address: z.string(),
+  address: z.string().min(10),
 });
 
 export default function Booking() {
+  const [location, setLocation] = useState(null);
+  const [error, setError] = useState(null);
   const [date, setDate] = useState(Date);
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const [humanaddress, sethumanaddress] = useState("");
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -52,29 +55,76 @@ export default function Booking() {
     },
   });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    const formData = form.getValues();
+    const mutation =
+      gql`
+      mutation MyMutation {
+        createCustomer(
+          data: {
+          name: "` +
+      formData.fullName +
+      `",
+          email: "` +
+      formData.emailAddress +
+      `",
+          phoneNumber: ` +
+      formData.phoneNumber +
+      `,
+          address: "` +
+      formData.address +
+      `"  date: "` +
+      date +
+      `"
+        }
+        ) {
+          id
+        }
+        publishManyCustomers(to: PUBLISHED) {
+          count
+        }
+      }
+    `;
+    const endpoint =
+      "https://api-ap-south-1.hygraph.com/v2/clxoyzx5v018806uxpcgqljnw/master";
 
     try {
-      const formData = form.getValues(); // Retrieve form data
-      const response = await axios.post("http://localhost:1337/api/customer", {
-        data: {
-          name: formData.fullName,
-          phone_number: formData.phoneNumber,
-          email: formData.emailAddress,
-          address: formData.address,
-          date: date ? format(date, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx") : null, // Format date if available
-        },
-      });
-      console.log(response);
-
-      router.replace("/thank-you");
+      const result = await request(endpoint, mutation);
+      router.push("/thank-you");
     } catch (error) {
-      console.error("Error submitting form:", error);
-      toast({
-        variant: "destructive",
-        title: "Please Fill all the fields properly.",
-      });
+      console.error("Error sending GraphQL request:", error);
+    }
+  };
+
+  const handleFetchLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+
+          // Update location state
+          setLocation({ latitude, longitude });
+
+          try {
+            // Fetch address using reverse geocoding (Google Maps Geocoding API)
+            const response = await axios.get(
+              `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyDXn6KSA4exy08KiKicYZ53wCfs20__qWU`
+            );
+
+            // Extract formatted address from response
+            const formattedAddress = response.data.results[0].formatted_address;
+            sethumanaddress(formattedAddress);
+            console.log(humanaddress);
+          } catch (error) {
+            setError(error.toString());
+          }
+        },
+        (error) => {
+          setError(error.message);
+        }
+      );
+    } else {
+      setError("Geolocation is not supported by this browser.");
     }
   };
 
@@ -160,24 +210,31 @@ export default function Booking() {
               </PopoverContent>
             </Popover>
           </div>
-          <FormField
-            control={form.control}
-            name="address"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel>Enter Pickup Address</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="Pickup Address" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-          <div onClick={handleSubmit}>
+          <div>
+            <FormField
+              control={form.control}
+              name="address"
+              value={"humanaddress"}
+              // onChange={(e) => setAddress(e.target.value)}
+              render={({ field }) => {
+                return (
+                  <FormItem>
+                    <div className=" flex  place-items-center px-4 gap-3">
+                      <FormLabel>Enter Pickup Address</FormLabel>
+                      <Locate onClick={handleFetchLocation} />
+                    </div>
+                    <FormControl>
+                      <Textarea placeholder="Pickup Address" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            />
+          </div>
+          <div>
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Loading..." : "CONTINUE"}
+              {isLoading ? "Loading..." : " Book Now"}
             </Button>
           </div>
         </form>
@@ -185,3 +242,4 @@ export default function Booking() {
     </main>
   );
 }
+// onClick={handleSubmit}

@@ -3,6 +3,7 @@ import Landing from "@/app/_components/Landing";
 import Featured from "@/app/_components/Featured";
 import FAQ from "@/app/_components/FAQ";
 import ContactUs from "./_components/Contactus";
+import WhyUs from "./_components/WhyUs";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       </Head> */}
       <Landing />
       <Featured />
+      <WhyUs />
       <FAQ />
       <ContactUs />
     </div>

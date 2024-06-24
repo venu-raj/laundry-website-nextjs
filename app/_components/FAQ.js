@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import Image from "next/image";
+'use client'
+import { useState } from "react";
 
 const faqData = [
     {
@@ -41,22 +41,26 @@ const faqData = [
 ]
 
 export default function FAQ() {
+    const [showAll, setShowAll] = useState(false);
+
+    const toggleShowAll = () => {
+        setShowAll(!showAll);
+    };
     return (
         <section className="bg-white dark:bg-gray-900">
             <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                 <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
-                    <h1 className=" p-3 font-bold text-4xl">Frequently asked questions</h1>
+                    <h1 className="p-3 font-bold text-4xl">Frequently asked questions</h1>
                     <div className="flow-root">
                         <div className="-my-8 divide-y divide-gray-100">
-                            {faqData.map((faq, key) => (
-                                <details className="group py-8 [&_summary::-webkit-details-marker]:hidden" key={key}>
+                            {faqData.slice(0, showAll ? faqData.length : 4).map((faq, key) => (
+                                <details className="group py-8" key={key}>
                                     <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
                                         <h2 className="text-lg font-medium">{faq.question}</h2>
-
                                         <span className="relative size-5 shrink-0">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                className="absolute inset-0 size-5 opacity-100 group-open:opacity-0"
+                                                className={`absolute inset-0 size-5 ${showAll ? 'opacity-0' : 'opacity-100'}`}
                                                 fill="none"
                                                 viewBox="0 0 24 24"
                                                 stroke="currentColor"
@@ -68,10 +72,9 @@ export default function FAQ() {
                                                     d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                                                 />
                                             </svg>
-
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                className="absolute inset-0 size-5 opacity-0 group-open:opacity-100"
+                                                className={`absolute inset-0 size-5 ${showAll ? 'opacity-100' : 'opacity-0'}`}
                                                 fill="none"
                                                 viewBox="0 0 24 24"
                                                 stroke="currentColor"
@@ -85,7 +88,6 @@ export default function FAQ() {
                                             </svg>
                                         </span>
                                     </summary>
-
                                     <p className="mt-4 leading-relaxed text-gray-700">
                                         {faq.answer}
                                     </p>
@@ -93,9 +95,19 @@ export default function FAQ() {
                             ))}
                         </div>
                     </div>
-
                 </div>
+                {!showAll && (
+                    <div className="flex justify-center mt-6 relative">
+                        <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-white dark:from-gray-900 pointer-events-none" />
+                        <button
+                            className="py-2 px-4 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition duration-300 z-10"
+                            onClick={toggleShowAll}
+                        >
+                            Show More
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
-    )
+    );
 }
